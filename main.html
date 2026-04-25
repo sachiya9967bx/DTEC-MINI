@@ -3,332 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>CYBER PANDA</title>
+  <title>DTEC MINI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   <style>
-    /* ===== RESET & GLOBAL ANIMATIONS ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background: radial-gradient(circle at 30% 10%, #0b0c1a, #010101);
-      font-family: 'Segoe UI', 'Poppins', 'Arial', sans-serif;
+      height: 100vh;
+      margin: 0;
+      background: black;
+      font-family: Arial, sans-serif;
       overflow: hidden;
-      position: relative;
-      animation: bgPulse 12s infinite alternate;
-    }
-
-    /* animated background grain & movement */
-    @keyframes bgPulse {
-      0% {
-        background: radial-gradient(circle at 30% 20%, #0a0e1e, #000000);
-      }
-      100% {
-        background: radial-gradient(circle at 70% 80%, #10152b, #02060c);
-      }
-    }
-
-    /* floating particles effect (pure css) */
-    body::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        radial-gradient(2px 2px at 20% 40%, rgba(0, 242, 255, 0.2) 2px, transparent 2px),
-        radial-gradient(1px 1px at 60% 85%, rgba(0, 255, 200, 0.2) 1px, transparent 1px);
-      background-size: 50px 50px, 80px 80px;
-      pointer-events: none;
-      animation: drift 20s linear infinite;
-      opacity: 0.5;
-    }
-
-    @keyframes drift {
-      0% { transform: translateY(0px) translateX(0px); }
-      100% { transform: translateY(-60px) translateX(40px); }
     }
 
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      perspective: 800px;
-      z-index: 2;
     }
 
-    /* ===== BOX WITH NEON PULSE + FLOAT ===== */
     .box {
-      width: 340px;
-      padding: 24px 20px 28px;
-      background: rgba(8, 12, 22, 0.82);
-      backdrop-filter: blur(4px);
-      border-radius: 32px;
+      width: 320px;
+      padding: 20px;
+      background-color: #111;
+      border-radius: 10px;
       text-align: center;
-      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 255, 255, 0.2), 0 0 20px rgba(0, 242, 255, 0.3);
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      animation: floatGlow 4s ease-in-out infinite, fadeSlideUp 0.8s ease-out;
-      border: 1px solid rgba(0, 255, 255, 0.35);
+      box-shadow: 0 0 15px #00f2ff;
     }
 
-    .box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 28px 40px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(0, 230, 255, 0.6), 0 0 32px #00f2ff7f;
-    }
-
-    @keyframes floatGlow {
-      0% {
-        transform: translateY(0px);
-        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), 0 0 15px #00ffff66;
-      }
-      50% {
-        transform: translateY(-6px);
-        box-shadow: 0 28px 42px rgba(0, 0, 0, 0.55), 0 0 30px #0ff, 0 0 8px #0ff;
-      }
-      100% {
-        transform: translateY(0px);
-        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), 0 0 15px #00ffff66;
-      }
-    }
-
-    @keyframes fadeSlideUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0px);
-      }
-    }
-
-    /* icon & headings */
-    .fa-user {
-      font-size: 2.6rem;
-      filter: drop-shadow(0 0 6px cyan);
-      animation: iconPulse 2s infinite;
-    }
-
-    @keyframes iconPulse {
-      0% { text-shadow: 0 0 0px cyan; opacity: 0.9; }
-      100% { text-shadow: 0 0 12px #0ff; opacity: 1; }
-    }
-
-    h3 {
-      color: #bbffff;
-      font-size: 1.7rem;
-      letter-spacing: 1.5px;
-      margin: 12px 0 6px;
-      background: linear-gradient(135deg, #aaffff, #2ad4ff);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 12px #00ccff80;
-      font-weight: 700;
-    }
-
-    h6 {
-      color: #a0e7ff;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      margin: 6px 0;
-      font-weight: 500;
-      text-transform: uppercase;
-      opacity: 0.9;
+    h3, h6 {
+      color: #00f2ff;
+      margin: 10px 0;
     }
 
     .input-container {
       display: flex;
       width: 100%;
-      margin: 22px 0 12px;
-      gap: 6px;
+      margin-top: 15px;
     }
 
     .input-container input,
     .input-container button {
-      height: 3.2rem;
-      font-size: 0.95rem;
+      height: 3rem;
+      font-size: 1rem;
       border: none;
       outline: none;
-      transition: all 0.25s ease;
+      box-sizing: border-box;
     }
 
     .input-container input {
-      width: 68%;
-      border-radius: 2rem 0 0 2rem;
-      background: #0e1322;
-      color: #ccf4ff;
-      padding-left: 1.3rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      border: 1px solid #2e6b7c;
-      border-right: none;
-      backdrop-filter: blur(2px);
-      font-size: 1rem;
-    }
-
-    .input-container input:focus {
-      border-color: #0ff;
-      background: #0c1020;
-      box-shadow: 0 0 12px #0ff55a;
-      color: #ffffff;
-    }
-
-    .input-container input::placeholder {
-      color: #5c7f8c;
-      font-weight: 400;
-      font-size: 0.85rem;
+      width: 70%;
+      border-radius: 0.8rem 0 0 0.8rem;
+      background: #e0f7ff;
+      color: #000;
+      padding-left: 1rem;
     }
 
     .input-container button {
-      width: 32%;
-      border-radius: 0 2rem 2rem 0;
-      background: linear-gradient(95deg, #0bd3ff, #0099ff);
-      color: white;
+      width: 30%;
+      border-radius: 0 0.8rem 0.8rem 0;
+      background: #00bfff;
+      color: #fff;
       font-weight: bold;
       cursor: pointer;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      border: none;
-      box-shadow: 0 4px 10px rgba(0, 180, 240, 0.3);
-      transition: 0.2s;
     }
 
     .input-container button:hover {
-      background: linear-gradient(95deg, #28e1ff, #00b0ff);
-      transform: scale(1.02);
-      box-shadow: 0 6px 18px #00ccff80;
+      background: #00ffff;
       color: #000;
-      letter-spacing: 1.2px;
-    }
-
-    .input-container button:active {
-      transform: scale(0.98);
     }
 
     a.centered-text {
-      color: #bceeff;
+      color: white;
       display: block;
-      margin-top: 16px;
+      margin-top: 20px;
       font-weight: bold;
-      font-size: 0.8rem;
-      text-decoration: none;
-      transition: 0.2s;
-      cursor: default;
-    }
-
-    /* dynamic response area (#pair) styling */
-    #pair {
-      margin-top: 12px;
-      transition: all 0.2s;
-    }
-
-    #pair font {
-      display: inline-block;
-      background: rgba(0, 20, 30, 0.7);
-      padding: 8px 16px;
-      border-radius: 40px;
-      letter-spacing: 1px;
-      backdrop-filter: blur(4px);
-      cursor: pointer;
-      transition: 0.2s;
-      font-weight: bold;
-      font-size: 1.2rem;
-      box-shadow: 0 0 6px cyan;
-    }
-
-    #pair font:hover {
-      transform: scale(1.02);
-      background: #0a2a38;
-      box-shadow: 0 0 16px #0ff;
-    }
-
-    /* error/waiting messages */
-    #pair a {
-      font-size: 0.85rem;
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(2px);
-      font-weight: 500;
-      animation: softPulse 1.6s infinite;
-    }
-
-    @keyframes softPulse {
-      0% { opacity: 0.7; text-shadow: 0 0 0px cyan; }
-      100% { opacity: 1; text-shadow: 0 0 5px cyan; }
-    }
-
-    /* extra styles for copy code area */
-    #pair font[onclick] {
-      font-family: monospace;
-      letter-spacing: 2px;
-    }
-
-    /* make waiting message more attractive */
-    #waiting-message {
-      color: #7ffbff;
-      background: rgba(0, 150, 200, 0.15);
-      padding: 8px;
-      border-radius: 50px;
-      backdrop-filter: blur(4px);
-      width: fit-content;
-      margin: 12px auto 0;
-      transition: all 0.2s;
-    }
-
-    /* ensure number field legibility */
-    input[type="text"], input[type="number"] {
-      font-family: monospace;
-      font-size: 1rem;
-    }
-
-    /* additional micro-interactions for headings */
-    h3 i, h6 i {
-      margin-right: 6px;
-    }
-
-    /* glowing line effect under h3 */
-    h3:after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 2px;
-      background: linear-gradient(90deg, #0ff, #f0f, #0ff);
-      margin: 8px auto 0;
-      border-radius: 2px;
-      animation: lineGlow 2s infinite;
-    }
-
-    @keyframes lineGlow {
-      0% { width: 50px; opacity: 0.6; }
-      50% { width: 90px; opacity: 1; box-shadow: 0 0 6px cyan; }
-      100% { width: 50px; opacity: 0.6; }
-    }
-
-    /* responsive small */
-    @media (max-width: 420px) {
-      .box {
-        width: 92%;
-        padding: 20px 16px;
-      }
-      .input-container input {
-        font-size: 0.9rem;
-      }
-      .input-container button {
-        font-size: 0.7rem;
-      }
-      h3 {
-        font-size: 1.5rem;
-      }
     }
   </style>
 </head>
